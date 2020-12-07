@@ -22,7 +22,6 @@ const Login = (props) => {
       .post("http://localhost:5000/login", data)
       .then((response) => {
         if (response.data) {
-          //   console.log(response.data);
           localStorage.setItem("token", response.data);
           props.history.push("/home");
         }
@@ -35,7 +34,8 @@ const Login = (props) => {
   };
 
   return (
-    <div>
+    <div className="login-container">
+      <h1>Login</h1>
       <div>
         <input
           type="email"
@@ -47,7 +47,6 @@ const Login = (props) => {
         />
       </div>
       <div>
-        {" "}
         <input
           type="password"
           name="password"

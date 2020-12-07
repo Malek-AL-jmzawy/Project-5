@@ -27,9 +27,9 @@ const updateProduct = (req, res) => {
     })
 }
 
-const getproducts = (req, res) => {
+const getProducts = (req, res) => {
     const query = `SELECT * from products WHERE store_id=?`
-    const data = [req.body.store_id]
+    const data = [req.params.store_id]
     connection.query(query, data, (err, results) => {
         if (err) {
             throw err;
@@ -75,9 +75,10 @@ const addStore = (req, res) => {
 }
 
 const updateStore = (req, res) => {
-    const { store_name, store_category, store_pic, store_id } = req.body
+   
+    const { store_name, store_category, store_pic } = req.body
     const data = [store_name, store_category, store_pic]
-    const query = `UPDATE store SET store_name=?,store_category=?,store_pic=? WHERE store_id=${store_id} `
+    const query = `UPDATE store SET store_name=?,store_category=?,store_pic=? WHERE store_id=${req.params.store_id} `
     connection.query(query, data, (err, results) => {
         if (err) {
             throw err;
@@ -100,6 +101,28 @@ const getStoresbyStoreId = (req, res) => {
     const query = `SELECT * from store WHERE store_id=?`
     const data = [req.params.store_id]
     connection.query(query, data, (err, results) => {
+        if (err) {
+            throw err;
+        }
+        res.json(results)
+    })
+}
+
+const getAllStores = (req, res) => {
+    const query = `SELECT * from store `
+    connection.query(query, (err, results) => {
+        if (err) {
+            throw err;
+        }
+        res.json(results)
+    })
+}
+
+const specificStores = (req, res) => {
+    const query = `SELECT * from store WHERE store_category=? `
+    const{store_category}=req.body
+    const data=[store_category]
+    connection.query(query,data,(err, results) => {
         if (err) {
             throw err;
         }
@@ -210,5 +233,5 @@ const ordersAndUsers = (req, res) => {
 module.exports = {
     addProduct, getproducts, deleteProduct, updateProduct, addStore, updateStore, getStores, deleteStore,
     createItem, deleteItem, createOrder, getItems, getOrders, deleteOrder, ordersAndUsers, getproductsByItem
-    , getStoresbyStoreId
+    , getStoresbyStoreId, getAllStores,specificStores
 }

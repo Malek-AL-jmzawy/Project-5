@@ -5,17 +5,11 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Header from "./components/Header";
+import InfoStore from "./InfoStore";
+import Product from "./components/Product";
 import CSTprofile from './CSTprofile';
-import "./App.css"
 import StoreProfile from './StoreProfile';
 import  'bootstrap';
-
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-} from 'react-router-dom';
 
 const App = (props) => {
   const [storeId, setStoreId] = useState({ })
@@ -34,6 +28,16 @@ const App = (props) => {
           path="/store/:id"
           render={(props) => <StoreProfile name={storeId} sId={9}{...props} />}
         />
+      <Route path="/login" render={(props) => <Login {...props} />} />
+      <Route path="/register" render={(props) => <Register {...props} />} />
+      <Route exat path="/home" render={(props) => <Home {...props} />} />
+        <Route
+        exact
+        path="/infostore"
+        render={(props) => <InfoStore {...props} />}
+      />
+      <Route exact path="/product" render={(props) => <Product {...props} />} />
+      <Route exact path="/product" render={(props) => <Product {...props} />} />
       </div>
     </Router>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router , Route, Link } from "react-router-dom"; 
 import axios from "axios";
 
 const Register = (props) => {
@@ -77,7 +77,8 @@ const Register = (props) => {
   };
 
   return (
-    <div>
+    <div className="register-container">
+      <h1>Register</h1>
       <div>
         <input
           type="email"
@@ -100,6 +101,7 @@ const Register = (props) => {
         />
       </div>
       <div>
+        {" "}
         <input
           type="text"
           name="firstName"
@@ -121,6 +123,7 @@ const Register = (props) => {
         />
       </div>
       <div>
+        {" "}
         <label htmlFor="address"> Select a country</label>
         <select name="address" id="address" onClick={handleChange}>
           <option value="Jordan">Jordan</option>
@@ -137,6 +140,7 @@ const Register = (props) => {
         />
       </div>
       <div>
+        {" "}
         <input
           type="text"
           name="region"
@@ -147,6 +151,7 @@ const Register = (props) => {
         />
       </div>
       <div>
+        {" "}
         <input
           type="text"
           name="phoneNumber"
@@ -168,9 +173,7 @@ const Register = (props) => {
         <button onClick={handleSubmit}>Register</button>
       </div>
       <Link to="/login">
-        <div>
-          <p>Already member?</p>
-        </div>
+      <div><p>Already member?</p></div>
       </Link>
     </div>
   );
