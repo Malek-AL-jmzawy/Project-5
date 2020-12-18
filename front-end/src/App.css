@@ -230,9 +230,9 @@ body {
 .order {
   background-color: rgba(158, 163, 89, 0.562);
   box-shadow: 5px 5px 5px 5px black;
-  height: 60px;
+  height: min-content;
   margin: 5px;
-  width: 65%;
+  width: 85%;
   justify-content: center;
 }
 

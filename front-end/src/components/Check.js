@@ -69,16 +69,18 @@ const Check = (props) => {
   let renderOrder = orders.map((product) => {
     return (
       <div>
-        <div className="order" style={{ boxShadow: "2px 2px  #888888" }}>
+        <div className="" style={{ boxShadow: "2px 2px  #888888" }}>
           <div style={{ textAlign: "center", display: "flex" }}>
-            <div style={{ paddingTop: "10px" }}>
-              <img src={product.picture} />
-              <p>{product.product_name}</p>
-              <p>
+            <div style={{
+              paddingTop: "10px", textDecorationLine: "overline"
+            }}  className="row order ">
+              <img style={{ height:"75px",maxWidth:"75px",paddingBottom: "10px" }}  src={product.picture} className="col"/>
+             <p className="col">{product.product_name}</p>
+              <p  className="col">
                 quantity:
                 <spam> {product.quantity}</spam>
               </p>
-              <p>price:{product.price}JD</p>
+              <p  className="col">price:{product.price}JD</p>
             </div>
           </div>
         </div>
@@ -131,32 +133,32 @@ const Check = (props) => {
             {renderOrder}
           </div>
         ) : (
-          <div>
             <div>
-              <p
-                style={{
-                  borderBottom: "1px solid gray",
-                  lineHeight: "1.3",
-                  paddingBottom: "10px",
-                  fontSize: " 18px",
-                  fontWeight: "400",
-                }}
-              >
-                Items
-                <img
+              <div>
+                <p
                   style={{
-                    float: "right",
-                    paddingTop: "6px",
-                    cursor: "pointer",
+                    borderBottom: "1px solid gray",
+                    lineHeight: "1.3",
+                    paddingBottom: "10px",
+                    fontSize: " 18px",
+                    fontWeight: "400",
                   }}
-                  onClick={showitems}
-                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEyIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNiA1LjQ3NjRMMTAuMzg4IDEuMDg4NEMxMC41MjggMC45NDgzOTggMTAuNzU2IDAuOTQ4Mzk4IDEwLjg5NSAxLjA4ODRDMTEuMDM1IDEuMjI4NCAxMS4wMzUgMS40NTU0IDEwLjg5NSAxLjU5NDRMNi4yNTYgNi4yMzQ0TDYuMjU0IDYuMjM3NEM2LjE4NCA2LjMwNzQgNi4wOTIgNi4zNDI0IDYgNi4zNDI0QzUuOTA4IDYuMzQyNCA1LjgxNiA2LjMwNzQgNS43NDYgNi4yMzc0TDUuNzQ0IDYuMjM0NEwxLjEwNSAxLjU5NDRDMC45NjUgMS40NTQ0IDAuOTY1IDEuMjI3NCAxLjEwNSAxLjA4ODRDMS4yNDUgMC45NDgzOTggMS40NzMgMC45NDgzOTggMS42MTIgMS4wODg0TDYgNS40NzY0WiIgZmlsbD0iIzc1NzU3NSIgc3Ryb2tlPSIjNzU3NTc1IiBzdHJva2Utd2lkdGg9IjAuOCIvPgo8L3N2Zz4K"
-                  alt="arrow"
-                ></img>
-              </p>
+                >
+                  Items
+                <img
+                    style={{
+                      float: "right",
+                      paddingTop: "6px",
+                      cursor: "pointer",
+                    }}
+                    onClick={showitems}
+                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEyIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNiA1LjQ3NjRMMTAuMzg4IDEuMDg4NEMxMC41MjggMC45NDgzOTggMTAuNzU2IDAuOTQ4Mzk4IDEwLjg5NSAxLjA4ODRDMTEuMDM1IDEuMjI4NCAxMS4wMzUgMS40NTU0IDEwLjg5NSAxLjU5NDRMNi4yNTYgNi4yMzQ0TDYuMjU0IDYuMjM3NEM2LjE4NCA2LjMwNzQgNi4wOTIgNi4zNDI0IDYgNi4zNDI0QzUuOTA4IDYuMzQyNCA1LjgxNiA2LjMwNzQgNS43NDYgNi4yMzc0TDUuNzQ0IDYuMjM0NEwxLjEwNSAxLjU5NDRDMC45NjUgMS40NTQ0IDAuOTY1IDEuMjI3NCAxLjEwNSAxLjA4ODRDMS4yNDUgMC45NDgzOTggMS40NzMgMC45NDgzOTggMS42MTIgMS4wODg0TDYgNS40NzY0WiIgZmlsbD0iIzc1NzU3NSIgc3Ryb2tlPSIjNzU3NTc1IiBzdHJva2Utd2lkdGg9IjAuOCIvPgo8L3N2Zz4K"
+                    alt="arrow"
+                  ></img>
+                </p>
+              </div>
             </div>
-          </div>
-        )}
+          )}
         <Popup
           modal
           trigger={
