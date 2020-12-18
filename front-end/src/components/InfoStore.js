@@ -23,49 +23,49 @@ const InfoStore = (props) => {
       });
   };
 
-  
   const handleOnChange = (e) => {
     e.preventDefault();
     setSearchProduct(e.target.value);
     if (searchProduct) {
-     axios.get(
-     `http://localhost:5000/getsearch?search=${e.target.value}&id=${props.location.state.store_id}`
-      )
-        .then((response)=>{
-           
-            setProducts(response.data);
-           
-        }).catch((error)=>{
-          throw error
-          
+      axios
+        .get(
+          `http://localhost:5000/getsearch?search=${e.target.value}&id=${props.location.state.store_id}`
+        )
+        .then((response) => {
+          setProducts(response.data);
         })
-      }
-        getproducts();    
-     
+        .catch((error) => {
+          throw error;
+        });
+    }
+    getproducts();
   };
-const chooseStore=()=>{
-  props.history.push("/home");
-}
-const renderProducts = products.map((product) => <Product data={product} />);
 
-
+  const chooseStore = () => {
+    props.history.push("/home");
+  };
+  
+  const renderProducts = products.map((product) => <Product data={product} />);
 
   return (
     <div>
-       <div className="search-container">
+      <div className="search-container">
         <input
           className="search"
           type="search"
-          placeholder={`Search ${props.location.state.store_name }...`}
+          placeholder={`Search ${props.location.state.store_name}...`}
           onChange={handleOnChange}
           value={searchProduct}
         />
-        </div> 
-        {products.length? (<div className="store-container">{renderProducts}</div>):
-        (<div><h2>Product not found in this store</h2>
-        <button onClick={chooseStore}>Choose another store</button>
-        </div>)}
-     
+      </div>
+      {products.length ? (
+        <div className="store-container">{renderProducts}</div>
+      ) : (
+        <div>
+          <h2>Product not found in this store</h2>
+          <button onClick={chooseStore}>Choose another store</button>
+        </div>
+      )}
     </div>
   );
 };

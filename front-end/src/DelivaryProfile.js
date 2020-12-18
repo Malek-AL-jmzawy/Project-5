@@ -1,12 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-} from "react-router-dom";
 
 const DelivaryProfile = (props) => {
   const { id } = props.match.params;
@@ -41,6 +35,7 @@ const DelivaryProfile = (props) => {
         throw err;
       });
   };
+
   const pastOrdersInfo = async () => {
     const user = jwt_decode(localStorage.getItem("token"));
     axios
@@ -52,6 +47,7 @@ const DelivaryProfile = (props) => {
         throw err;
       });
   };
+
   const unassignedOrdersInfo = async () => {
     axios
       .get(`http://localhost:5000/unassignedOrders`)
@@ -62,6 +58,7 @@ const DelivaryProfile = (props) => {
         throw err;
       });
   };
+
   const assigneeOrder = async (infoArgumnt) => {
     const user = jwt_decode(localStorage.getItem("token"));
     const body = { orders_id: infoArgumnt, delivary_user_id: user.user_id };
@@ -75,6 +72,7 @@ const DelivaryProfile = (props) => {
         throw err;
       });
   };
+
   const delvaredOrders = PastOrders.map((e, index) => (
     <li
       className="list-group-item list-group-item-action"
@@ -82,7 +80,7 @@ const DelivaryProfile = (props) => {
       key={index}
     >
       <div>
-        <div className="bg-info">orders_id : {e.orders_id} </div>
+        <div className="col p-1 mb-2 bg-success text-white">orders_id : {e.orders_id} </div>
         <div>
           delivary name : {e.first_name} {e.last_name}
         </div>
@@ -91,6 +89,7 @@ const DelivaryProfile = (props) => {
       </div>
     </li>
   ));
+
   const myUnassignedOrders = unassignedOrders.map((e, index) => (
     <li
       className="list-group-item list-group-item-action"
@@ -98,13 +97,13 @@ const DelivaryProfile = (props) => {
       key={index}
     >
       <div>
-        <div className="bg-info">orders_id : {e.orders_id} </div>
+        <div className="col p-1 mb-2 bg-success text-white">orders_id : {e.orders_id} </div>
         <div>
           <img
             src={e.picture}
             alt="store pic"
             className="pPic rounded mx-auto d-block"
-          ></img>{" "}
+          ></img>
         </div>
         <div>
           customer name : {e.first_name} {e.last_name}
@@ -112,7 +111,7 @@ const DelivaryProfile = (props) => {
         <div>product name : {e.product_name} </div>
         <div>store name : {e.store_name} </div>
         <button
-          className="btn btn-primary"
+          className="btn btn-primary bg-success text-white"
           onClick={() => assigneeOrder(e.orders_id)}
         >
           accept
@@ -120,6 +119,7 @@ const DelivaryProfile = (props) => {
       </div>
     </li>
   ));
+
   useEffect(() => {
     getDelevaryUser();
     pastOrdersInfo();
@@ -154,19 +154,16 @@ const DelivaryProfile = (props) => {
             email : {email}
           </p>
           <p className="list-group-item list-group-item-action d-flex justify-content-center">
-            {" "}
             Phone Number : {PhoneNumber}
           </p>
         </div>
       </div>
       <div className="row" >
       <div  className="col">
-        {" "}
         UnassignedOrders
         <ul>{myUnassignedOrders}</ul>
       </div>
       <div className="col">
-        {" "}
         past orders
         <ul>{delvaredOrders}</ul>
       </div>

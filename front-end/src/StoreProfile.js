@@ -35,6 +35,7 @@ const StoreProfile = (props) => {
         throw err;
       });
   };
+
   const storesOrdersbyid = async (infoArgumnt) => {
     axios
       .get(`http://localhost:5000/storesOrders/${infoArgumnt}`)
@@ -45,6 +46,7 @@ const StoreProfile = (props) => {
         throw err;
       });
   };
+
   const storesProductbyid = async (infoArgumnt) => {
     axios
       .get(`http://localhost:5000/storeproducts/${infoArgumnt}`)
@@ -185,23 +187,24 @@ const StoreProfile = (props) => {
       </div>
     </li>
   ));
+
   useEffect(() => {
     getStorebyid(storeId);
     storesOrdersbyid(storeId);
     storesProductbyid(storeId);
   }, []);
+
   return (
     <Router>
       <div>
         <div className="list-group-item list-group-item-action">
           <h1 className="rounded-pill bg-success">store name : {userStore.store_name}</h1>
-    
         <div>
           <img
             src={userStore.store_pic}
             alt="store pic"
             className="pPic  rounded mx-auto d-block"
-          ></img>{" "}
+          ></img>
         </div>
           <div className="list-group-item list-group-item-action d-flex justify-content-center">store id :{userStore.store_id} </div>
           <div className="list-group-item list-group-item-action d-flex justify-content-center">store category : {userStore.store_category} </div>

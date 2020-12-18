@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Product from "./components/Product";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 const InfoStore = (props) => {
   const [products, setProducts] = useState([]);
   const [searchProduct, setSearchProduct] = useState("");
-
-
 
   const getproducts = () => {
     let data = { store_id: props.location.state.store_id };
@@ -37,6 +34,7 @@ const InfoStore = (props) => {
         });
     }
   };
+  
   const chooseStore = () => {
     props.history.push("/home");
   };
@@ -61,18 +59,31 @@ const InfoStore = (props) => {
       {products.length ? (
         <div className="store-container2">{renderProducts}</div>
       ) : (
-          <div style={{
-            textAlign: "center"
-          }}>
-            <img style={{
-              width: "100px", marginTop: "50px"
-            }} src="https://i.pinimg.com/564x/24/8c/c4/248cc4eec11b158d6eaf49c7088022a4.jpg" />
-            <p style={{
-              marginTop: "20px", fontSize: "30px"
-            }} >Product not found in this store</p>
-            <button class="btn btn-primary" onClick={chooseStore}>Choose another store</button>
-          </div>
-        )}
+        <div
+          style={{
+            textAlign: "center",
+          }}
+        >
+          <img
+            style={{
+              width: "100px",
+              marginTop: "50px",
+            }}
+            src="https://i.pinimg.com/564x/24/8c/c4/248cc4eec11b158d6eaf49c7088022a4.jpg"
+          />
+          <p
+            style={{
+              marginTop: "20px",
+              fontSize: "30px",
+            }}
+          >
+            Product not found in this store
+          </p>
+          <button class="btn btn-primary" onClick={chooseStore}>
+            Choose another store
+          </button>
+        </div>
+      )}
     </div>
   );
 };

@@ -28,8 +28,8 @@ const CSTprofile = (props) => {
   const [storeId, setStoreId] = useState("storeid");
   const [userStore, setStore] = useState(["store"]);
   const [isRedirect, setRedirect] = useState(false);
+  
   const getUser = async () => {
-   
     const user = jwt_decode(localStorage.getItem("token"));
     axios
       .get(`http://localhost:5000/users/${user.user_id}`)
@@ -73,7 +73,7 @@ const CSTprofile = (props) => {
         throw err;
       });
   };
-  
+
   const deleteStore = async (infoArgumnt) => {
     axios
       .delete(`http://localhost:5000/store/${infoArgumnt}`)
@@ -108,11 +108,12 @@ const CSTprofile = (props) => {
         throw err;
       });
   };
+
   const updatePic = async () => {
-    const data ={image_profile:userPic}
+    const data = { image_profile: userPic };
     const user = jwt_decode(localStorage.getItem("token"));
     axios
-      .put(`http://localhost:5000/updatePic/${user.user_id}`,data)
+      .put(`http://localhost:5000/updatePic/${user.user_id}`, data)
       .then(async (response) => {
         getunassignedOrdersInfo(userId);
         getOrdersInfo();
@@ -121,6 +122,7 @@ const CSTprofile = (props) => {
         throw err;
       });
   };
+
   const userUnassignedOrders = Unassigned.map((e, index) => (
     <li
       className="list-group-item list-group-item-action "
@@ -128,7 +130,9 @@ const CSTprofile = (props) => {
       key={index}
     >
       <div>
-        <div className="bg-info">orders_id : {e.orders_id} </div>
+        <div className=" col p-1 mb-2 bg-success text-white">
+          orders_id : {e.orders_id}{" "}
+        </div>
         <div>
           <img
             src={e.picture}
@@ -139,7 +143,7 @@ const CSTprofile = (props) => {
         <div>product name : {e.product_name} </div>
         <div>store name : {e.store_name} </div>
         <button
-          className="btn btn-primary"
+          className="btn btn-primary bg-success text-white"
           onClick={() => cancelOrder(e.orders_id)}
         >
           cancel order
@@ -154,8 +158,10 @@ const CSTprofile = (props) => {
       num={index + 1}
       key={index}
     >
-      <div  >
-        <div className="bg-info">orders_id : {e.orders_id} </div>
+      <div>
+        <div className=" col p-1 mb-2 bg-success text-white">
+          orders_id : {e.orders_id}{" "}
+        </div>
         <div>
           delivary name : {e.first_name} {e.last_name}
         </div>
@@ -172,7 +178,7 @@ const CSTprofile = (props) => {
       </div>
     </li>
   ));
-  
+
   const userStores = stores.map((e, index) => (
     <li
       className="list-group-item list-group-item-action"
@@ -180,53 +186,78 @@ const CSTprofile = (props) => {
       key={index}
     >
       <button
-        className="btn btn-primary"
+        className="btn btn-primary  bg-success text-white"
         onClick={() => deleteStore(e.store_id)}
       >
-        d
+        X
       </button>
-        <a href={`/store/${e.store_id}`} className="storeLink" >
+      <a href={`/store/${e.store_id}`} className="storeLink">
         <div
           onClick={() => {
             setStoreId(e.store_id);
           }}
         >
           <div>store name : {e.store_name} </div>
-          <div className="bg-info">store id : {e.store_id}</div>
+          <div className="col p-1 mb-2 bg-success text-white">
+            store id : {e.store_id}
+          </div>
           <div>store category : {e.store_category} </div>
           <div>
             <img
               src={e.store_pic}
               alt="store pic"
               className="pPic rounded mx-auto d-block"
-            ></img>{" "}
+            ></img>
           </div>
         </div>
-        </a>
+      </a>
     </li>
   ));
+
   useEffect(() => {
     getOrdersInfo();
     getStores();
     getUser();
     getunassignedOrdersInfo();
   }, []);
-  
+
   return (
     <Router>
       <div className="container">
+        {/* <img
+         src={userPic}
+         alt="pic"
+         style={{float:"right",marginTop:"-53px" ,marginRight:"60px",borderRadius:"150px"}} className="headerpPic"
+       ></img> */}
         <div className="row">
           <div className="col list-group">
             <div className="d-flex justify-content-center">
               <img src={userPic} alt="profile pic" className="mPic"></img>
-              
               <Popup
-              trigger={  <button> &#x2710;  </button>}
-              position="right center"
-            >  <div>insert new picture<input placeholder="new URL" onChange={(e)=>setUserPic(e.target.value)}/>
-            <button onClick={()=>{updatePic(); }}> done </button></div> </Popup>
+                trigger={<button> &#x2710; </button>}
+                position="right center"
+              >
+                {(close) => (
+                  <div>
+                    <div>
+                      insert new picture
+                      <input
+                        placeholder="new URL"
+                        onChange={(e) => setUserPic(e.target.value)}
+                      />
+                    </div>
+                    <button
+                      onClick={() => {
+                        updatePic();
+                        close();
+                      }}
+                    >
+                      done
+                    </button>
+                  </div>
+                )}
+              </Popup>
             </div>
-          
             <div className="d-flex justify-content-center thead-dark display-3">
               {Farstname} {Lastname}
             </div>
@@ -246,7 +277,6 @@ const CSTprofile = (props) => {
               Email : {email}
             </p>
             <p className="list-group-item list-group-item-action d-flex justify-content-center">
-              {" "}
               Phone Number : {PhoneNumber}
             </p>
           </div>
@@ -256,10 +286,9 @@ const CSTprofile = (props) => {
                 <p class="thead-dark display-3">
                   {Farstname} Unassigned Orders
                 </p>
-                {userUnassignedOrders}
+                {userUnassignedOrders}{" "}
               </ul>
             </div>
-
             <div className="col-4 list-group">
               <ul>
                 <p class="thead-dark display-3">{Farstname} orders</p>
