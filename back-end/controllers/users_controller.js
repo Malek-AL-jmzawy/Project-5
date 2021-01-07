@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 
+
 const register = async (req, res) => {
   const {
     first_name,
@@ -75,6 +76,7 @@ const login = (req, res) => {
           birhday,
           phone_number,
           image_profile
+
         };
         const options = {
           expiresIn: process.env.TOKEN_EXPIRATION,
@@ -100,6 +102,7 @@ const getAllUsers = (req, res) => {
     res.json(results);
   });
 };
+
 const getUserById = (req, res) => {
   const query = `SELECT * FROM users WHERE user_id=${req.params.user_id}`;
   connection.query(query, (err, results) => {

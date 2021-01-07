@@ -8,6 +8,10 @@ const Home = () => {
   const [stores, setStores] = useState([]);
   const [orderList, setOrderList] = useState([]);
 
+
+const Home = () => {
+  const [stores, setStores] = useState([]);
+
   useEffect(() => {
     getAllStores();
   }, []);
@@ -37,6 +41,7 @@ const Home = () => {
         throw error;
       });
   };
+
 
   const getSpecificStores = (e) => {
     let data = { store_category: e.target.name };

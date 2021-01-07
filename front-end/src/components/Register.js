@@ -13,6 +13,8 @@ const Register = (props) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [imageProfile, setimageProfile] = useState("");
   const [roleId, setRoleId] = useState(0);
+  const [paymentId, setPaymentId] = useState(1);
+  const [storeId, setStoreId] = useState(1);
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
   const [errorFirstName, setErrorFirstName] = useState("");
@@ -154,6 +156,7 @@ const Register = (props) => {
           required
         />
       </div>
+    
       <div style={{ fontSize: "12", color: "red" }}>{errorEmail}</div>
       <div className="handel_input">
         <input
@@ -165,6 +168,7 @@ const Register = (props) => {
           required
         />
       </div>
+    
       <div style={{ fontSize: "12", color: "red" }}>{errorPassword}</div>
       <div className="handel_input">
         <input
@@ -176,6 +180,7 @@ const Register = (props) => {
           required
         />
       </div>
+    
       <div style={{ fontSize: "12", color: "red" }}>{errorFirstName}</div>
       <div className="handel_input">
         <input
@@ -207,11 +212,13 @@ const Register = (props) => {
           type="text"
           name="city"
           placeholder="Address"
+
           value={city}
           onChange={handleChange}
           required
         />
       </div>
+    
       <div className="handel_input">
         <input
           type="text"
@@ -222,6 +229,7 @@ const Register = (props) => {
           required
         />
       </div>
+    
       <div className="handel_input">
         <input
           type="text"
@@ -255,6 +263,7 @@ const Register = (props) => {
         <div>
           <p>Already member?</p>
         </div>
+
       </Link>
     </div>
   );

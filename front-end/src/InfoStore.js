@@ -4,10 +4,19 @@ import axios from "axios";
 
 const InfoStore = (props) => {
   const [products, setProducts] = useState([]);
+
   const [searchProduct, setSearchProduct] = useState("");
 
   const getproducts = () => {
     let data = { store_id: props.location.state.store_id };
+
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  const getProducts = () => {
+
     axios
       .get(`http://localhost:5000/getproduct/${props.location.state.store_id}`)
       .then((response) => {
@@ -84,6 +93,13 @@ const InfoStore = (props) => {
           </button>
         </div>
       )}
+
+  const renderProducts = products.map((product) =>
+   <Product data={product} />);
+
+  return (
+    <div>
+      <div className="store-container">{renderProducts}</div>
     </div>
   );
 };
