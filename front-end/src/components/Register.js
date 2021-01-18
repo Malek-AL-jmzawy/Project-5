@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router , Route, Link } from "react-router-dom"; 
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from "axios";
 
 const Register = (props) => {
@@ -15,6 +15,65 @@ const Register = (props) => {
   const [roleId, setRoleId] = useState(0);
   const [paymentId, setPaymentId] = useState(1);
   const [storeId, setStoreId] = useState(1);
+  const [errorEmail, setErrorEmail] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
+  const [errorFirstName, setErrorFirstName] = useState("");
+  const [errorLastName, setErrorLastName] = useState("");
+  const [errorAddress, setErrorAddress] = useState("");
+  const [errorPhoneNumber, setErrorPhoneNumber] = useState("");
+  const [errorRoleId, setErrorRoleId] = useState("");
+
+  const validate = () => {
+    let errorEmail = "";
+    let errorPassword = "";
+    let errorFirstName = "";
+    let errorlasttName = "";
+    let errorAddress = "";
+    let errorPhoneNumber = "";
+    let errorRoleId = "";
+
+    if (!email.length) {
+      errorEmail = "Invalid email";
+    }
+    if (!password.length) {
+      errorPassword = "Invalid password";
+    }
+    if (!firstName.length) {
+      errorFirstName = "Invalid first name";
+    }
+    if (!lastName.length) {
+      errorlasttName = "Invalid last name";
+    }
+    if (!address.length) {
+      errorAddress = "Invalid address";
+    }
+    if (!phoneNumber.length) {
+      errorPhoneNumber = "Invalid phoneNumber";
+    }
+    if (!roleId.length) {
+      errorRoleId = "Invalid RoleId";
+    }
+    if (
+      errorEmail ||
+      errorPassword ||
+      errorFirstName ||
+      errorlasttName ||
+      errorAddress ||
+      errorPhoneNumber ||
+      errorRoleId
+    ) {
+      setErrorEmail(errorEmail);
+      setErrorPassword(errorPassword);
+      setErrorFirstName(errorFirstName);
+      setErrorAddress(errorAddress);
+      setErrorLastName(errorLastName);
+      setErrorPhoneNumber(errorPhoneNumber);
+      setErrorRoleId(errorRoleId);
+      
+      return false;
+    }
+    return true;
+  };
 
   const handleChange = (event) => {
     if (event.target.name === "email") {
@@ -47,41 +106,49 @@ const Register = (props) => {
   };
 
   const handleSubmit = (event) => {
-    const data = {
-      last_name: lastName,
-      first_name: firstName,
-      address: address,
-      city: city,
-      region: region,
-      phone_number: phoneNumber,
-      imageProfile,
-      email: email,
-      password: password,
-      store_id: storeId,
-      payment_id: paymentId,
-      role_id: roleId,
-    };
-    axios
-      .post("http://localhost:5000/register", data)
-      .then((response) => {
-        if (response.data) {
-          props.history.push("/login");
-          alert("create an account");
-        } else {
-          alert("email is already exists");
-        }
-      })
-      .catch((error) => {
-        console.log("error :", error);
-      });
+    const isValidate = validate();
+    if (isValidate) {
+      setErrorEmail("");
+      setErrorPassword("");
+      setErrorFirstName("");
+      setErrorAddress("");
+      setErrorLastName("");
+      setErrorPhoneNumber("");
+      setErrorRoleId("");
+      const data = {
+        last_name: lastName,
+        first_name: firstName,
+        address: address,
+        city: city,
+        region: region,
+        phone_number: phoneNumber,
+        imageProfile,
+        email: email,
+        password: password,
+        role_id: roleId,
+      };
+      axios
+        .post("http://localhost:5000/register", data)
+        .then((response) => {
+          if (response.data) {
+            props.history.push("/login");
+            alert("create an account");
+          } else {
+            alert("email is already exists");
+          }
+        })
+        .catch((error) => {
+          throw error;
+        });
+    }
   };
 
   return (
-    <div className="register-container">
+    <div className="register-container2">
       <h1>Register</h1>
-      <div>
+      <div className="handel_input">
         <input
-          type="email"
+          type="text"
           name="email"
           placeholder="Email"
           value={email}
@@ -89,8 +156,9 @@ const Register = (props) => {
           required
         />
       </div>
-      <div>
-        {" "}
+    
+      <div style={{ fontSize: "12", color: "red" }}>{errorEmail}</div>
+      <div className="handel_input">
         <input
           type="password"
           name="password"
@@ -100,8 +168,9 @@ const Register = (props) => {
           required
         />
       </div>
-      <div>
-        {" "}
+    
+      <div style={{ fontSize: "12", color: "red" }}>{errorPassword}</div>
+      <div className="handel_input">
         <input
           type="text"
           name="firstName"
@@ -111,8 +180,9 @@ const Register = (props) => {
           required
         />
       </div>
-      <div>
-        {" "}
+    
+      <div style={{ fontSize: "12", color: "red" }}>{errorFirstName}</div>
+      <div className="handel_input">
         <input
           type="text"
           name="lastName"
@@ -122,25 +192,34 @@ const Register = (props) => {
           required
         />
       </div>
-      <div>
-        {" "}
-        <label htmlFor="address"> Select a country</label>
+      <div style={{ fontSize: "12", color: "red" }}>{errorLastName}</div>
+      <div className="handel_input">
+        <label htmlFor="address"> Select a City</label>
         <select name="address" id="address" onClick={handleChange}>
-          <option value="Jordan">Jordan</option>
+          <option value="zarqa">zarqa</option>
+          <option value="Amman">Amman</option>
+          <option value="al-mafraq">al-mafraq</option>
+          <option value="ma'an">ma'an</option>
+          <option value="irbed">irbed</option>
+          <option value="madaba">madaba</option>
+          <option value="aqaba">aqaba</option>
+          <option value="ajloun">ajloun</option>
+          <option value="jarash">jarash</option>
         </select>
       </div>
-      <div>
+      <div className="handel_input">
         <input
           type="text"
           name="city"
-          placeholder="City"
+          placeholder="Address"
+
           value={city}
           onChange={handleChange}
           required
         />
       </div>
-      <div>
-        {" "}
+    
+      <div className="handel_input">
         <input
           type="text"
           name="region"
@@ -150,8 +229,8 @@ const Register = (props) => {
           required
         />
       </div>
-      <div>
-        {" "}
+    
+      <div className="handel_input">
         <input
           type="text"
           name="phoneNumber"
@@ -161,7 +240,8 @@ const Register = (props) => {
           required
         />
       </div>
-      <div>
+      <div style={{ fontSize: "12", color: "red" }}>{errorPhoneNumber}</div>
+      <div className="handel_input">
         <label htmlFor="roleId"> Select a type </label>
         <select name="roleId" id="roleId" onClick={handleChange}>
           <option value="1">Customer</option>
@@ -169,11 +249,21 @@ const Register = (props) => {
           <option value="3">Delivery</option>
         </select>
       </div>
+      <div style={{ fontSize: "12", color: "red" }}>{errorRoleId}</div>
       <div>
-        <button onClick={handleSubmit}>Register</button>
+        <button
+          class="btn btn-primary"
+          style={{ backgroundColor: "green", marginTop: "15px" }}
+          onClick={handleSubmit}
+        >
+          Register
+        </button>
       </div>
       <Link to="/login">
-      <div><p>Already member?</p></div>
+        <div>
+          <p>Already member?</p>
+        </div>
+
       </Link>
     </div>
   );

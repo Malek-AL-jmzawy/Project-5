@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="container">
-      <nav className=" nav-header">
+    <div className="container2">
+      <nav className=" navheader">
         <div className="">
-          <ul className="navbar-nav ">
+          <ul className="navbar2-nav ">
             <li className="nav-item">
               <Link to="/Login" className="nav-link">
                 Login

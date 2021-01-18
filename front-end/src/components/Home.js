@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import Store from "./Store";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
+
+const Home = () => {
+  const [stores, setStores] = useState([]);
+  const [orderList, setOrderList] = useState([]);
+
 
 const Home = () => {
   const [stores, setStores] = useState([]);
@@ -12,7 +18,7 @@ const Home = () => {
 
   const getAllStores = () => {
     axios
-      .get("http://localhost:5000/stores")
+      .get("http://localhost:5000/allstore")
       .then((response) => {
         setStores(response.data);
       })
@@ -20,6 +26,22 @@ const Home = () => {
         throw error;
       });
   };
+
+  const getOrders = async () => {
+    const user = jwt_decode(localStorage.getItem("token"));
+    let data = { user_id: user.user_id };
+    axios
+      .get(`http://localhost:5000/getorder/${user.user_id}`)
+      .then((response) => {
+        setOrderList(response.data);
+        localStorage.setItem("order", JSON.stringify(response.data));
+        getOrders();
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+
 
   const getSpecificStores = (e) => {
     let data = { store_category: e.target.name };
@@ -37,7 +59,7 @@ const Home = () => {
     <Link
       className="link"
       to={{
-        pathname: "/infostore",
+        pathname: `/infostore/${store.store_id}`,
         state: store,
       }}
       style={{ textDecoration: "none" }}
@@ -49,18 +71,33 @@ const Home = () => {
   return (
     <div>
       <div className="store-category">
-        <button onClick={getAllStores}>All</button>
-        <button name="Groceries" onClick={getSpecificStores}>
+        <button
+          className="category"
+          style={{ marginLeft: "7px" }}
+          onClick={getAllStores}
+        >
+          All
+        </button>
+        <button
+          className="category"
+          name="Groceries"
+          onClick={getSpecificStores}
+        >
           Groceries
         </button>
-        <button name="Bakery" onClick={getSpecificStores}>
+        <button className="category" name="Bakery" onClick={getSpecificStores}>
           Bakery
         </button>
-        <button name="Coffee" onClick={getSpecificStores}>
+        <button className="category" name="Coffee" onClick={getSpecificStores}>
           Coffee
         </button>
+        <button className="category" name="Flowers" onClick={getSpecificStores}>
+          Flowers
+        </button>
       </div>
-      <div className="store-container">{renderStores}</div>
+      <div className="category" className="store-container2">
+        {renderStores}
+      </div>
     </div>
   );
 };

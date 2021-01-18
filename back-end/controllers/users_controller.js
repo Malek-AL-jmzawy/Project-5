@@ -3,6 +3,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const express = require("express");
 const app = express();
+require("dotenv").config();
+
 
 const register = async (req, res) => {
   const {
@@ -15,9 +17,7 @@ const register = async (req, res) => {
     email,
     password,
     image_profile,
-    payment_id,
     role_id,
-    store_id,
   } = req.body;
   const hashedPassword = await bcrypt.hash(password, Number(process.env.SALT));
   const data = [
@@ -31,11 +31,10 @@ const register = async (req, res) => {
     email,
     hashedPassword,
     image_profile,
-    payment_id,
-    store_id,
   ];
   const query = `INSERT INTO users (first_name,last_name,role_id,address,city,region,phone_number,email,password,
-        image_profile,payment_id,store_id)VALUES(?,?,?,?,?,?,?,?,?,?,?,?)`;
+        image_profile)
+    VALUES (?,?,?,?,?,?,?,?,?,?) `;
   connection.query(query, data, (err, results) => {
     if (err) {
       throw err;
@@ -63,6 +62,8 @@ const login = (req, res) => {
           city,
           birhday,
           phone_number,
+          image_profile
+          
         } = result[0];
         const payload = {
           user_id,
@@ -74,6 +75,8 @@ const login = (req, res) => {
           city,
           birhday,
           phone_number,
+          image_profile
+
         };
         const options = {
           expiresIn: process.env.TOKEN_EXPIRATION,
@@ -81,18 +84,16 @@ const login = (req, res) => {
         const token = jwt.sign(payload, process.env.SECRET, options);
         res.json(token);
       } else {
-        // res.status(422);
-        res.json([]);
+        res.json({ error: "Invalid login check your password" });
       }
     } else {
-      // res.status(404);
-      res.json([]);
+      res.json({ error: "Invalid login check your email" });
     }
   });
 };
 
 const getAllUsers = (req, res) => {
-  const query = `SELECT * FROM user WHERE is_deleted=?`;
+  const query = `SELECT * FROM users WHERE is_deleted=?`;
   const data = [0];
   connection.query(query, data, (err, results) => {
     if (err) {
@@ -103,13 +104,24 @@ const getAllUsers = (req, res) => {
 };
 
 const getUserById = (req, res) => {
-    const query = `SELECT * FROM users WHERE user_id=${req.params.user_id}`
-    connection.query(query,  (err, results) => {
-        if (err) {
-            throw err;
-        }
-        res.json(results)
-    })
-}
+  const query = `SELECT * FROM users WHERE user_id=${req.params.user_id}`;
+  connection.query(query, (err, results) => {
+    if (err) {
+      throw err;
+    }
+    res.json(results);
+  });
+};
 
-module.exports = { register, getAllUsers, login ,getUserById}
+const updatePic = (req, res) => {
+  const query = `UPDATE users SET image_profile=? WHERE user_id=?`;
+  const data =[req.body.image_profile,req.params.user_id]
+  connection.query(query, data,(err, results) => {
+    if (err) {
+      throw err;
+    }
+    res.json(results);
+  });
+};
+
+module.exports = { register, getAllUsers, login, getUserById,updatePic };
