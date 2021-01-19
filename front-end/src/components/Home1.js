@@ -23,7 +23,7 @@ const Home1 = () => {
     return (
         <div className="homePage">
             <div></div>
-            <div className="row g-3" style={{height:"500px",border:"green solid 1px",marginTop:"100px",marginBottom:"100px"
+            <div className="row g-3" style={{height:"500px",border:"green solid 1px",marginTop:"150px",marginBottom:"100px"
             ,marginLeft:"150px",marginRight:"150px",textAlign:"center",justifyContent:"center",backgroundColor:" rgba(0, 0, 0, 0.25)",
             backgroundImage:"url(https://wallpaperaccess.com/full/93391.jpg)",backgroundRepeat:"none",backgroundRepeat:"no-repeat",
             boxShadow:"4px 4px 4px 4px black",
@@ -31,13 +31,13 @@ const Home1 = () => {
               <Link to="/Login" className="nav-link">
               <h1>Login</h1>
               </Link>
-            <p>Dont have an account yet</p>
+            <p>Dont have an account yet ?</p>
               <Link to="/register" className="nav-link">
               <h1>Register</h1>
               </Link>
             </div>
 
-            <ul className="rounded-pill" style={{marginLeft:"180px",marginRight:"180px"}} > <li className="list-group-item list-group-item-action login-container2">
+            <ul className="rounded-pill" style={{marginLeft:"180px",marginRight:"180px",textAlign:"center",margin:"180px",marginTop:"300px"}} > <li className="list-group-item list-group-item-action ">
                 <div>How to use our site
         <div className=" col p-1 mb-2 bg-success text-white rounded-pill "style={{marginLeft:"18px",marginRight:"18px"}} >
                         {stepArr[steps]}

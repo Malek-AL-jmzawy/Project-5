@@ -43,9 +43,16 @@ body {
   transition: 0.5s;
 }
 
-.register-container2,
+.register-container2{
+  text-align: center;
+  margin: 100px ;
+
+}
 .login-container2 {
   text-align: center;
+  margin: 250px ;
+  
+
 }
 
 .store-container2 {
@@ -94,8 +101,10 @@ body {
 }
 
 .navheader {
-  color: rgb(0, 0, 0);
-  background-image: url("https://www.ukm.my/jcil/wp-content/uploads/2015/07/Header-background.jpg");
+  color: rgb(7, 6, 6);
+  background-image: linear-gradient(to bottom right, green, white);
+
+  /* background-image: url("https://www.ukm.my/jcil/wp-content/uploads/2015/07/Header-background.jpg"); */
   background-size: cover;
   text-align: right;
   box-shadow: 2px 2px rgb(66, 66, 66);
@@ -127,6 +136,10 @@ body {
 .nav-item:hover {
   transition: 0.5s;
   box-shadow: 3px 3px rgb(66, 59, 59);
+  /* transform:scale(1,1.5); */
+  height: 120%;
+  border-radius: 5%;
+
 }
 
 .store-category {
@@ -292,8 +305,9 @@ nav li a {
 
 nav li a:hover,
 #select a:hover {
-  background-color: rgba(133, 202, 55, 0.767);
+  background-color: rgba(52, 63, 40, 0.767);
   color: white;
+  border-radius: 10px;
 }
 
 #select {
@@ -403,7 +417,15 @@ select {
   border-radius: 4px;
   cursor: pointer;
 }
+input:hover{
+  box-shadow: 5px 5px 5px 5px rgba(44, 42, 42, 0.37);
+  border: none;
 
+}
+input{
+  box-shadow: 2px 2px 2px 2px rgba(44, 42, 42, 0.37);
+  border: none;
+}
 .handel_input input[type="email"],
 .login-container2 input {
   width: 70%;
