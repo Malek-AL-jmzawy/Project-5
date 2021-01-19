@@ -22,7 +22,7 @@ const App = () => {
         path="/login"
         render={(props) => (
           <div>
-            <Header {...props} />
+            {/* <Header {...props} /> */}
             <Login {...props} />
           </div>
         )}
@@ -32,7 +32,8 @@ const App = () => {
         path="/register"
         render={(props) => (
           <div>
-            <Header {...props} /> <Register {...props} />
+            {/* <Header {...props} /> */}
+             <Register {...props} />
           </div>
         )}
       />

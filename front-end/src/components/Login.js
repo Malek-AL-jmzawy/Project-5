@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect,Link } from "react-router-dom";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -85,7 +85,7 @@ const [picArr,setpicArr]=useState(["https://previews.123rf.com/images/pushnova/p
       <h1>Login</h1>
       <div className="">
         <input
-          class="handel_input"
+          class="handel_input rounded-pill"
           type="email"
           name="email"
           placeholder="Email"
@@ -97,7 +97,7 @@ const [picArr,setpicArr]=useState(["https://previews.123rf.com/images/pushnova/p
       <div style={{ fontSize: "12", color: "red" }}>{errorEmail}</div>
       <div className="login-btn">
         <input
-          class="handel_input"
+          class="handel_input rounded-pill"
           type="password"
           name="password"
           placeholder="Password"
@@ -114,10 +114,12 @@ const [picArr,setpicArr]=useState(["https://previews.123rf.com/images/pushnova/p
       >
         Login
       </button>
-      <ul> <li
+      <p>Dont have an account yet ?</p>
+              <Link to="/register" className="nav-link">
+              <p>Register</p>
+              </Link>
+      {/* <ul> <li
       className="list-group-item list-group-item-action "
-      // num={index + 1}
-      // key={index}
     >
       <div>How to use our site 
         <div className=" col p-1 mb-2 bg-success text-white">
@@ -133,7 +135,7 @@ const [picArr,setpicArr]=useState(["https://previews.123rf.com/images/pushnova/p
           <button onClick={()=>{ let i=steps-1;if(steps<0){setsteps(0)}else{setsteps(i)}}} >previos</button>
         </div>
       </div>
-    </li></ul>
+    </li></ul> */}
     </div>
   );
 };

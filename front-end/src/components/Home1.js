@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Home1 = () => {
     const [steps, setsteps] = useState(0);
-    const [stepArr, setStepArr] = useState(["First of all ware a mask keep safe ;)",
-        "regester then login", "if you want to have a store create it after hovring my account at the nav bar",
+    const [stepArr, setStepArr] = useState(["First of all wear a mask keep safe ;)",
+        "register then login", "if you want to have a store create it after hovring my account at the nav bar",
         "fill the inputs then submitt",
-        "if you want to place an order select the store that you love from home page a great list of stores you'll find ;)",
+        "if you want to place an order select your favorite store from home page a great list of stores you'll find ;)",
         "add the quantity then submitt",
         "if you want have a job and be part from our big family just you need to hover at my account and select login as a dilevaryman",
         "enjoy!! ^_^"])
@@ -21,31 +21,25 @@ const Home1 = () => {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKDtjU3Cn00xAVXJKPJCxSc5ybetQt4xeaBA&usqp=CAU"])
 
     return (
-        <div>
-            <div className="login-container2">
-             
-             
-              {/* <ul className="navbar2-nav "> */}
-            {/* <li className="nav-item"> */}
+        <div className="homePage">
+            <div></div>
+            <div className="row g-3" style={{height:"500px",border:"green solid 1px",marginTop:"100px",marginBottom:"100px"
+            ,marginLeft:"150px",marginRight:"150px",textAlign:"center",justifyContent:"center",backgroundColor:" rgba(0, 0, 0, 0.25)",
+            backgroundImage:"url(https://wallpaperaccess.com/full/93391.jpg)",backgroundRepeat:"none",backgroundRepeat:"no-repeat",
+            boxShadow:"4px 4px 4px 4px black",
+            backgroundSize:"cover"}}>
               <Link to="/Login" className="nav-link">
               <h1>Login</h1>
               </Link>
-            {/* </li> */}
-            <p>have already an account</p>
-            {/* <li className="nav-item"> */}
+            <p>Dont have an account yet</p>
               <Link to="/register" className="nav-link">
               <h1>Register</h1>
               </Link>
-              {/* </li> */}
-              {/* </ul> */}
             </div>
-            <ul> <li
-                className="list-group-item list-group-item-action "
-            // num={index + 1}
-            // key={index}
-            >
+
+            <ul className="rounded-pill" style={{marginLeft:"180px",marginRight:"180px"}} > <li className="list-group-item list-group-item-action login-container2">
                 <div>How to use our site
-        <div className=" col p-1 mb-2 bg-success text-white">
+        <div className=" col p-1 mb-2 bg-success text-white rounded-pill "style={{marginLeft:"18px",marginRight:"18px"}} >
                         {stepArr[steps]}
                     </div>
                     <div>
@@ -54,8 +48,8 @@ const Home1 = () => {
                             alt="pic"
                             className="pPic rounded mx-auto d-block"
                         ></img>{" "}
+                        <button onClick={() => { let i = steps - 1; setsteps(i) }} > previous</button>
                         <button onClick={() => { let i = steps + 1; setsteps(i) }} >next</button>
-                        <button onClick={() => { let i = steps - 1; setsteps(i) }} >previos</button>
                     </div>
                 </div>
             </li></ul>

@@ -13,11 +13,19 @@ button:hover {
   box-shadow: 5px 5px #000;
 }
 
+.homePage{ 
+  /* background-size: cover; */
+  /* background-image: url("https://blog.newhomesource.com/wp-content/uploads/2019/12/monstera.jpg"); */
+  /* background-repeat: no-repeat, repeat; */
+
+}
+
 body {
   background-repeat: no-repeat, repeat;
   font-family: "Courier New", Courier, monospace;
   margin: 0;
-  background-image: url("");
+  background-image: linear-gradient(to right, red , yellow);
+  /* background-image: url(""); */
   background-size: cover;
 }
 
