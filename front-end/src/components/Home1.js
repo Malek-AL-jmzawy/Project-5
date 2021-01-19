@@ -4,12 +4,12 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Home1 = () => {
     const [steps, setsteps] = useState(0);
-    const [stepArr, setStepArr] = useState(["First of all wear a mask keep safe ;)",
+    const [stepArr, setStepArr] = useState(["First of all wear a mask and stay safe ;)",
         "register then login", "if you want to have a store create it after hovring my account at the nav bar",
         "fill the inputs then submitt",
         "if you want to place an order select your favorite store from home page a great list of stores you'll find ;)",
-        "add the quantity then submitt",
-        "if you want have a job and be part from our big family just you need to hover at my account and select login as a dilevaryman",
+        "select a product then add the quantity then submitt",
+        "if you want have a job and be a part from our big family just you need to hover at my account and select login as a dilevaryman",
         "enjoy!! ^_^"])
     const [picArr, setpicArr] = useState(["https://previews.123rf.com/images/pushnova/pushnova2004/pushnova200400031/145121250-stay-safe-lettering-keep-healthy-with-cute-planet-earth-in-medical-mask-quarantine-precaution-to-sta.jpg",
         "https://thumbnail.imgbin.com/18/4/11/email-icon-login-icon-9hLbXDZc_t.jpg",

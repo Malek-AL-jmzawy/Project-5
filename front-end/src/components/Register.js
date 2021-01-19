@@ -241,7 +241,7 @@ const Register = (props) => {
         />
       </div>
       <div style={{ fontSize: "12", color: "red" }}>{errorPhoneNumber}</div>
-      {/* <div className="handel_input">
+      <div className="handel_input">
         <label htmlFor="roleId"> </label>
         <select name="roleId" id="roleId" class="handel_input rounded-pill" onClick={handleChange}>Select a type
         <option value="1">Customer</option>
@@ -249,7 +249,7 @@ const Register = (props) => {
           <option value="2">Merchant</option>
           <option value="3">Delivery</option>
         </select>
-      </div> */}
+      </div>
       <div style={{ fontSize: "12", color: "red" }}>{errorRoleId}</div>
       <div>
         <button

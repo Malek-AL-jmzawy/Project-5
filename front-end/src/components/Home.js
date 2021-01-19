@@ -26,12 +26,12 @@ const Home = () => {
   useEffect(() => {
     getAllStores();
   }, []);
-setTimeout(()=>{if(steps!==(stepArr.length-1)){ let i = steps + 1; setsteps(i)}},3000)
+setTimeout(()=>{if(steps!==(stepArr.length-1)){ let i = steps + 1; setsteps(i)}},5000)
   const getAllStores = () => {
     axios
       .get("http://localhost:5000/allstore")
       .then((response) => {
-        setStores(response.data);
+        setStores(response.data);  
       })
       .catch((error) => {
         throw error;
