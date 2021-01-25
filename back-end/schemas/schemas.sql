@@ -95,7 +95,7 @@ is_deleted tinyint default 0,
 PRIMARY KEY (payment_id)
 FOREIGN KEY (user_id) REFERENCES users (user_id),
  FOREIGN KEY (check_out_id) REFERENCES check_out (check_out_id)
-)
+);
 
 //*************************************************/
  CREATE TABLE check_out (
@@ -107,4 +107,5 @@ FOREIGN KEY (user_id) REFERENCES users (user_id),
  PRIMARY KEY (check_out_id),
  FOREIGN KEY (user_id) REFERENCES users (user_id),
  FOREIGN KEY (orders_id) REFERENCES orders (orders_id)
- )
+ );
+ 
