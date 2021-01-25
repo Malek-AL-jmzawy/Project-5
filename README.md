@@ -1,15 +1,12 @@
 Online.com
-
 Is an online shopping website help the people to buy and sell without going out of home , by a deliveryman that will carry the require product 
 To the customer and take few extra money.  
 
 Team
-
 1. development Team Member Malik Muslih
 2. Scrum master: Rama Qandeel 
 
 Table of contents
-
 1. Team 
 2. Usage 
 3. Requirements 
