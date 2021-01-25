@@ -10,9 +10,9 @@ Team
 Table of contents
 
 1. Team 
-2. Requirements
-3. Database schema
-4. Usage 
+2. Usage 
+3. Requirements 
+4. Wire Frame
 
 Usage
 Through our website people can easily:
@@ -32,10 +32,20 @@ How to run the app
 .npm run dev ,at server side.
 .npm start ,at client side.
 
+ Wire Frames
+ home page  url :https://wireframe.cc/S7ya8s
 
-Data base schema 
+ home when not loged in https://wireframe.cc/AUwsLI
 
+ products CST https://wireframe.cc/JP1iw5
 
- 
-.
-.
+ profiles
+ customer https://wireframe.cc/KhaCDk
+
+ store https://wireframe.cc/FFAJSW
+
+ delevery man https://wireframe.cc/lDqfq7
+
+ login  https://wireframe.cc/gmIEBj
+
+ regestar https://wireframe.cc/MfUPId
