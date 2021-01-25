@@ -161,5 +161,4 @@ module.exports={
     createOrder, getOrders, updateOrder, deleteOrder,
       getDelevarymanOrders, ordersAndStore
     , ordersAndUsers, cancelOrder, assigneeOrder, getUnassignedOrders, getUnassignedOrdersUser
-
 }

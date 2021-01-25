@@ -5,7 +5,6 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 
-
 const register = async (req, res) => {
   const {
     first_name,
@@ -76,7 +75,6 @@ const login = (req, res) => {
           birhday,
           phone_number,
           image_profile
-
         };
         const options = {
           expiresIn: process.env.TOKEN_EXPIRATION,

@@ -43,6 +43,17 @@ const getStoreCategory = (req, res) => {
         res.json(results)
     })
 }
+const getSroreById = (req, res) => {
+    const query = `SELECT store_id,store_name from store WHERE user_id=?`
+    const data = [req.params.user_id]
+
+    connection.query(query, data, (err, results) => {
+        if (err) {
+            throw err;
+        }
+        res.json(results)
+    })
+}
 
 const getproducts = (req, res) => {
     const query = `SELECT * from products WHERE store_id=?`
@@ -122,6 +133,12 @@ const specificStores = (req, res) => {
     const data = [store_category]
     connection.query(query, data, (err, results) => {
         if (err) {
+            console.log(err);
+        }
+        console.log(results);
+        res.json(results)
+    })
+}
             throw err;
         }
         res.json(results)
@@ -169,8 +186,7 @@ const createOrder = (req, res) => {
     const query = `INSERT INTO orders (user_id,delivary_user_id,store_id,product_id,price,product_name,quantity,picture)
     VALUES (?,?,?,?,?,?,?,?)`
     connection.query(query, data, (err, results) => {
-        if (err) {
-            
+        if (err) {          
         }
         res.json(results)
     })
@@ -266,7 +282,6 @@ const getUnassignedOrders = (req, res) => {
     })
 }
 
-// added
 const getUnassignedOrdersUser = (req, res) => {
     const query =
         `SELECT  orders.user_id, orders.orders_id,
@@ -380,4 +395,4 @@ module.exports = {
     createItem, deleteItem, createOrder, getItems, getOrders, updateOrder, deleteOrder, getAllStores, specificStores, getCategory, getSroreById, getStoreCategory, searchProduct
     , getproductsByStore, getStoresbyStoreId, getDelevarymanOrders, ordersAndStore
     , ordersAndUsers, cancelOrder, assigneeOrder, getUnassignedOrders, getUnassignedOrdersUser
-}
+ }

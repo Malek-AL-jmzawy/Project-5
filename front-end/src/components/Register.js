@@ -13,8 +13,6 @@ const Register = (props) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [imageProfile, setimageProfile] = useState("");
   const [roleId, setRoleId] = useState(0);
-  const [paymentId, setPaymentId] = useState(1);
-  const [storeId, setStoreId] = useState(1);
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
   const [errorFirstName, setErrorFirstName] = useState("");
@@ -146,8 +144,9 @@ const Register = (props) => {
   return (
     <div className="register-container2">
       <h1>Register</h1>
-      <div className="handel_input">
+      <div class="handel_input rounded-pill">
         <input
+        class="handel_input rounded-pill"
           type="text"
           name="email"
           placeholder="Email"
@@ -156,10 +155,10 @@ const Register = (props) => {
           required
         />
       </div>
-    
       <div style={{ fontSize: "12", color: "red" }}>{errorEmail}</div>
       <div className="handel_input">
         <input
+        class="handel_input rounded-pill"
           type="password"
           name="password"
           placeholder="Password"
@@ -168,10 +167,10 @@ const Register = (props) => {
           required
         />
       </div>
-    
       <div style={{ fontSize: "12", color: "red" }}>{errorPassword}</div>
       <div className="handel_input">
         <input
+        class="handel_input rounded-pill"
           type="text"
           name="firstName"
           placeholder="First Name"
@@ -180,10 +179,10 @@ const Register = (props) => {
           required
         />
       </div>
-    
       <div style={{ fontSize: "12", color: "red" }}>{errorFirstName}</div>
       <div className="handel_input">
         <input
+        class="handel_input rounded-pill"
           type="text"
           name="lastName"
           placeholder="Last Name"
@@ -194,9 +193,10 @@ const Register = (props) => {
       </div>
       <div style={{ fontSize: "12", color: "red" }}>{errorLastName}</div>
       <div className="handel_input">
-        <label htmlFor="address"> Select a City</label>
-        <select name="address" id="address" onClick={handleChange}>
-          <option value="zarqa">zarqa</option>
+        <label htmlFor="address"> </label>
+        <select name="address" class="handel_input rounded-pill" id="address" onClick={handleChange}>
+        <option> Select a City</option>
+        <option value="zarqa">zarqa</option>
           <option value="Amman">Amman</option>
           <option value="al-mafraq">al-mafraq</option>
           <option value="ma'an">ma'an</option>
@@ -209,18 +209,18 @@ const Register = (props) => {
       </div>
       <div className="handel_input">
         <input
+        class="handel_input rounded-pill"
           type="text"
           name="city"
           placeholder="Address"
-
           value={city}
           onChange={handleChange}
           required
         />
       </div>
-    
       <div className="handel_input">
         <input
+        class="handel_input rounded-pill"
           type="text"
           name="region"
           placeholder="Region"
@@ -229,9 +229,9 @@ const Register = (props) => {
           required
         />
       </div>
-    
       <div className="handel_input">
         <input
+        class="handel_input rounded-pill"
           type="text"
           name="phoneNumber"
           placeholder="Phone Number"
@@ -242,8 +242,9 @@ const Register = (props) => {
       </div>
       <div style={{ fontSize: "12", color: "red" }}>{errorPhoneNumber}</div>
       <div className="handel_input">
-        <label htmlFor="roleId"> Select a type </label>
-        <select name="roleId" id="roleId" onClick={handleChange}>
+        <label htmlFor="roleId"> </label>
+        <select name="roleId" id="roleId" class="handel_input rounded-pill" onClick={handleChange}>Select a type
+        <option value="1">Customer</option>
           <option value="1">Customer</option>
           <option value="2">Merchant</option>
           <option value="3">Delivery</option>
@@ -263,7 +264,6 @@ const Register = (props) => {
         <div>
           <p>Already member?</p>
         </div>
-
       </Link>
     </div>
   );

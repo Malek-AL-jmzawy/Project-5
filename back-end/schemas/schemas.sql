@@ -21,14 +21,6 @@ is_deleted BIT NOT NULL DEFAULT 0,
 PRIMARY KEY (store_id)
 );
 
---product 
-CREATE table productCategory(
-category_id int  NOT NULL ,
-category_name varchar(55),
-picture varchar(255) ,
-PRIMARY key (category_id)
-);
-
 CREATE table products(
 product_id int AUTO_INCREMENT NOT NULL ,
 product_category_id int ,
@@ -45,6 +37,8 @@ PRIMARY key (product_id),
 FOREIGN KEY (store_id) REFERENCES store(store_id),
 FOREIGN KEY (product_category_id) REFERENCES product_category(product_category_id)
 );
+
+
 
 CREATE table orders(
 orders_id int auto_increment NOT NULL,
@@ -66,6 +60,8 @@ role_id int NOT NULL,
 type varchar(55),
  PRIMARY KEY (role_id)
  );
+
+
 
 CREATE TABLE users (
 user_id int auto_increment NOT NULL,
@@ -98,7 +94,7 @@ is_deleted tinyint default 0,
 PRIMARY KEY (payment_id)
 FOREIGN KEY (user_id) REFERENCES users (user_id),
  FOREIGN KEY (check_out_id) REFERENCES check_out (check_out_id)
-)
+);
 
 //*************************************************/
  CREATE TABLE check_out (
@@ -111,4 +107,3 @@ FOREIGN KEY (user_id) REFERENCES users (user_id),
  FOREIGN KEY (user_id) REFERENCES users (user_id),
  FOREIGN KEY (orders_id) REFERENCES orders (orders_id)
  );
-
