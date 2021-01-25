@@ -23,6 +23,7 @@ const [picArr,setpicArr]=useState(["https://previews.123rf.com/images/pushnova/p
 "https://thumbs.dreamstime.com/b/icon-department-animals-make-order-checkout-online-shopping-e-commerce-concept-outline-label-emblem-store-websites-179071587.jpg",
 "https://image.freepik.com/free-vector/cute-happy-delivery-man-delivers-package-scooter-cartoon-character-illustration-icon-design-isolated_92289-1111.jpg",
 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKDtjU3Cn00xAVXJKPJCxSc5ybetQt4xeaBA&usqp=CAU"])
+
   const handleChange = (event) => {
     if (event.target.name === "email") {
       setEmail(event.target.value);
@@ -80,6 +81,7 @@ const [picArr,setpicArr]=useState(["https://previews.123rf.com/images/pushnova/p
         });
     }
   };
+
   return (
     <div className="login-container2">
       <h1>Login</h1>
@@ -118,24 +120,6 @@ const [picArr,setpicArr]=useState(["https://previews.123rf.com/images/pushnova/p
               <Link to="/register" className="nav-link">
               <p>Register</p>
               </Link>
-      {/* <ul> <li
-      className="list-group-item list-group-item-action "
-    >
-      <div>How to use our site 
-        <div className=" col p-1 mb-2 bg-success text-white">
-         {stepArr[steps]}
-        </div>
-        <div>
-          <img
-            src={picArr[steps]}
-            alt="pic"
-            className="pPic rounded mx-auto d-block"
-          ></img>{" "}
-          <button onClick={()=>{ let i=steps+1; setsteps(i)}} >next</button>
-          <button onClick={()=>{ let i=steps-1;if(steps<0){setsteps(0)}else{setsteps(i)}}} >previos</button>
-        </div>
-      </div>
-    </li></ul> */}
     </div>
   );
 };

@@ -27,6 +27,7 @@ const Home = () => {
     getAllStores();
   }, []);
 setTimeout(()=>{if(steps!==(stepArr.length-1)){ let i = steps + 1; setsteps(i)}},5000)
+
   const getAllStores = () => {
     axios
       .get("http://localhost:5000/allstore")
@@ -79,10 +80,8 @@ setTimeout(()=>{if(steps!==(stepArr.length-1)){ let i = steps + 1; setsteps(i)}}
     </Link>
   ));
 
-
   return (
     <div>
-      {/* {user?( <div></div>):()} */}
       <div className="store-category">
         <button
           className="category"
@@ -125,7 +124,9 @@ setTimeout(()=>{if(steps!==(stepArr.length-1)){ let i = steps + 1; setsteps(i)}}
                         <button onClick={() => {if(steps!==(stepArr.length-1)){ let i = steps + 1; setsteps(i)}}} >next</button>
                     </div>
                 </div>
-            </li></ul>
+            </li>
+        </ul>
+
       <div className="category" className="store-container2">
         {renderStores}
       </div>

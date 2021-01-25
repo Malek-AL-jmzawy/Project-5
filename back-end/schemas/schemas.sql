@@ -21,7 +21,6 @@ is_deleted BIT NOT NULL DEFAULT 0,
 PRIMARY KEY (store_id)
 );
 
-
 CREATE table products(
 product_id int AUTO_INCREMENT NOT NULL ,
 product_category_id int ,
@@ -108,4 +107,3 @@ FOREIGN KEY (user_id) REFERENCES users (user_id),
  FOREIGN KEY (user_id) REFERENCES users (user_id),
  FOREIGN KEY (orders_id) REFERENCES orders (orders_id)
  );
- 

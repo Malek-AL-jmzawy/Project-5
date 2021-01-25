@@ -195,7 +195,7 @@ const Register = (props) => {
       <div className="handel_input">
         <label htmlFor="address"> </label>
         <select name="address" class="handel_input rounded-pill" id="address" onClick={handleChange}>
-        <option value="zarqa">Select a City</option>
+        <option> Select a City</option>
         <option value="zarqa">zarqa</option>
           <option value="Amman">Amman</option>
           <option value="al-mafraq">al-mafraq</option>

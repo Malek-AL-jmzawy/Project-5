@@ -14,6 +14,7 @@ import StoreProfile from "./StoreProfile";
 import DelivaryProfile from "./DelivaryProfile";
 import Check from "./components/Check";
 import Home1 from "./components/Home1"
+
 const App = () => {
   return (
     <Router>
@@ -22,7 +23,6 @@ const App = () => {
         path="/login"
         render={(props) => (
           <div>
-            {/* <Header {...props} /> */}
             <Login {...props} />
           </div>
         )}
@@ -32,7 +32,6 @@ const App = () => {
         path="/register"
         render={(props) => (
           <div>
-            {/* <Header {...props} /> */}
              <Register {...props} />
           </div>
         )}
@@ -42,7 +41,6 @@ const App = () => {
         path="/"
         render={(props) => (
           <div>
-            {/* <Header {...props} /> */}
             <Home1 {...props} />
           </div>
         )}

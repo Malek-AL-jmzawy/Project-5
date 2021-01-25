@@ -13,19 +13,11 @@ button:hover {
   box-shadow: 5px 5px #000;
 }
 
-.homePage{ 
-  /* background-size: cover; */
-  /* background-image: url("https://blog.newhomesource.com/wp-content/uploads/2019/12/monstera.jpg"); */
-  /* background-repeat: no-repeat, repeat; */
-
-}
-
 body {
   background-repeat: no-repeat, repeat;
   font-family: "Courier New", Courier, monospace;
   margin: 0;
   background-image: linear-gradient(to right, red , yellow);
-  /* background-image: url(""); */
   background-size: cover;
 }
 
@@ -48,11 +40,10 @@ body {
   margin: 100px ;
 
 }
+
 .login-container2 {
   text-align: center;
   margin: 250px ;
-  
-
 }
 
 .store-container2 {
@@ -103,8 +94,6 @@ body {
 .navheader {
   color: rgb(7, 6, 6);
   background-image: linear-gradient(to bottom right, green, white);
-
-  /* background-image: url("https://www.ukm.my/jcil/wp-content/uploads/2015/07/Header-background.jpg"); */
   background-size: cover;
   text-align: right;
   box-shadow: 2px 2px rgb(66, 66, 66);
@@ -136,10 +125,8 @@ body {
 .nav-item:hover {
   transition: 0.5s;
   box-shadow: 3px 3px rgb(66, 59, 59);
-  /* transform:scale(1,1.5); */
   height: 120%;
   border-radius: 5%;
-
 }
 
 .store-category {
@@ -417,15 +404,17 @@ select {
   border-radius: 4px;
   cursor: pointer;
 }
+
 input:hover{
   box-shadow: 5px 5px 5px 5px rgba(44, 42, 42, 0.37);
   border: none;
-
 }
+
 input{
   box-shadow: 2px 2px 2px 2px rgba(44, 42, 42, 0.37);
   border: none;
 }
+
 .handel_input input[type="email"],
 .login-container2 input {
   width: 70%;

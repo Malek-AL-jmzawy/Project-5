@@ -1,5 +1,32 @@
 const express = require("express");
 const mainRouter = express.Router();
+const {
+  addProduct,
+  getProducts,
+  deleteProduct,
+  updateProduct,
+  addStore,
+  updateStore,
+  getStoresbyStoreId,
+  getStores,
+  deleteStore,
+  createItem,
+  deleteItem,
+  createOrder,
+  getItems,
+  getOrders,
+  getAllStores,
+  specificStores.
+  deleteOrder,
+  ordersAndUsers,
+  getproductsByItem
+} = require("../controllers/main-controller");
+const {
+  register,
+  getAllUsers,
+  login,
+  getUserById
+} = require("../controllers/users_controller");
 
 const {
   register,

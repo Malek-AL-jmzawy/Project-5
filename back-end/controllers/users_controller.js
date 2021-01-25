@@ -100,6 +100,7 @@ const getAllUsers = (req, res) => {
     res.json(results);
   });
 };
+
 const getUserById = (req, res) => {
   const query = `SELECT * FROM users WHERE user_id=${req.params.user_id}`;
   connection.query(query, (err, results) => {

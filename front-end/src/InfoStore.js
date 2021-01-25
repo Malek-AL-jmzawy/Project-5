@@ -5,7 +5,7 @@ import axios from "axios";
 const InfoStore = (props) => {
   const [products, setProducts] = useState([]);
   const [searchProduct, setSearchProduct] = useState("");
-
+  
   const getproducts = () => {
     let data = { store_id: props.location.state.store_id };
     axios
