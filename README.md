@@ -3,8 +3,8 @@ Is an online shopping website help the people to buy and sell without going out 
 To the customer and take few extra money.  
 
 Team
-1. development Team Member: Malik Muslih
-2. development Team Member: Rama Qandeel 
+1. Development Team Member: Malik Muslih
+2. Development Team Member: Rama Qandeel 
 
 Table of contents
 1. Team 
